@@ -1,0 +1,30 @@
+services:
+  user-service:
+    image: "perfectsquare/user-service:v2"
+    container_name: user-service-ms
+    ports:
+      - "9002:9002"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - blogs
+
+
+  post-service:
+    image: "perfectsquare/post-service:v2"
+    container_name: post-service-ms
+    ports:
+      - "9001:9001"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - blogs
+networks:
+  blogs:
+    driver: "bridge"
+
+
